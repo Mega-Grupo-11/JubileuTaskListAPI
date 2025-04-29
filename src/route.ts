@@ -14,3 +14,7 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     await LoginController.login(req, res);
 });
+
+router.post('/task', async (req, res) => {
+    res.status(200).json({ message: "creation successfully completed!" });
+});
