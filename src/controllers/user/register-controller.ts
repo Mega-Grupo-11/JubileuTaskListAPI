@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import bcrypt from "bcrypt";
 import { CreateUseCase } from "../../usecases/user/create-use-case";
 import { PrismaUserRepository } from "../../infrastructure/repositories/user-repository";
 import { AuthService } from "../../infrastructure/jwt/auth-service";
