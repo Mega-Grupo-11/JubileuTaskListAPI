@@ -1,7 +1,8 @@
 import { Router } from 'express';
-import { HomeController } from './controllers/home-controller';
-import { RegisterController } from './controllers/user/register-controller';
-import { LoginController } from './controllers/user/login-controller';
+import { HomeController } from './interfaces/controllers/home-controller';
+import { RegisterController } from './interfaces/controllers/user/register-controller';
+import { LoginController } from './interfaces/controllers/user/login-controller';
+import { authenticateToken } from './interfaces/middlewares/auth-middleware';
 
 export const router  = Router();
 
@@ -15,6 +16,6 @@ router.post('/login', async (req, res) => {
     await LoginController.login(req, res);
 });
 
-router.post('/task', async (req, res) => {
+router.post('/task', authenticateToken, async (req, res) => {
     res.status(200).json({ message: "creation successfully completed!" });
 });

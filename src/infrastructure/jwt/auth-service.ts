@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import jwt, { JwtPayload } from 'jsonwebtoken';
 
 export class AuthService {
     private secretKey = process.env.JWT_SECRET_KEY || 'S&cr3tK3y';
@@ -6,5 +6,9 @@ export class AuthService {
     generateToken(userId: string): string {
         const payload = { id: userId };
         return jwt.sign(payload, this.secretKey, { expiresIn: '1h' });
+    }
+    
+    verifyToken(token: string): string | JwtPayload {
+        return jwt.verify(token, this.secretKey);
     }
 }

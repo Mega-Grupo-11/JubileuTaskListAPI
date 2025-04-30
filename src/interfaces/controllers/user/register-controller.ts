@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import { CreateUseCase } from "../../usecases/user/create-use-case";
-import { PrismaUserRepository } from "../../infrastructure/repositories/user-repository";
-import { AuthService } from "../../infrastructure/jwt/auth-service";
-import { hashPassword } from "../../utils/password-generator";
+import { CreateUseCase } from "../../../usecases/user/create-use-case";
+import { PrismaUserRepository } from "../../../infrastructure/repositories/user-repository";
+import { AuthService } from "../../../infrastructure/jwt/auth-service";
+import { hashPassword } from "../../../utils/password-generator";
 
 export class RegisterController {
     static async register(req: Request, res: Response) {

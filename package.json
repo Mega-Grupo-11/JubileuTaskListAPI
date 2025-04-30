@@ -16,7 +16,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.ts",
-    "start": "node server.js",
+    "start": "ts-node server.ts",
     "build": "rimraf dist && tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
