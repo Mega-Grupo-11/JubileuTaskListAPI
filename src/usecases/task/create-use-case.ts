@@ -1,6 +1,6 @@
 import { CreateTaskDTO } from "../../domain/dtos/create-task-dto";
 import { Task } from "../../domain/entities/task";
-import { ITaskRepository } from "../../domain/repositories/task-repositories";
+import { ITaskRepository } from "../../domain/repositories/task-repository";
 
 export class CreateTaskUseCase {
     constructor(private taskRepository: ITaskRepository) {}

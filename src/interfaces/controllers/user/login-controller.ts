@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { PrismaUserRepository } from "../../../infrastructure/repositories/user-repository";
+import { PrismaUserRepository } from "../../../infrastructure/repositories/user-repositories";
 import { LoginUseCase } from "../../../usecases/user/login-use-case";
 
 export class LoginController {

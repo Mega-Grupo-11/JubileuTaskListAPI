@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { CreateUseCase } from "../../../usecases/user/create-use-case";
-import { PrismaUserRepository } from "../../../infrastructure/repositories/user-repository";
+import { PrismaUserRepository } from "../../../infrastructure/repositories/user-repositories";
 import { AuthService } from "../../../infrastructure/jwt/auth-service";
 import { hashPassword } from "../../../utils/password-generator";
 
