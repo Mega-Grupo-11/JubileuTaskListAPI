@@ -5,7 +5,7 @@ export class AuthService {
 
     generateToken(userId: string): string {
         const payload = { id: userId };
-        return jwt.sign(payload, this.secretKey, { expiresIn: '1h' });
+        return jwt.sign(payload, this.secretKey, { expiresIn: '6h' });
     }
     
     verifyToken(token: string): string | JwtPayload {
