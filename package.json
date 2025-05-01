@@ -22,7 +22,7 @@
     "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
-    "@prisma/client": "^6.6.0",
+    "@prisma/client": "^6.7.0",
     "bcrypt": "^5.1.1",
     "dotenv-safe": "^9.1.0",
     "express": "^5.1.0",
@@ -34,7 +34,7 @@
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "@vitest/coverage-c8": "^0.33.0",
-    "prisma": "^6.6.0",
+    "prisma": "^6.7.0",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3",
     "vitest": "^0.30.0"
