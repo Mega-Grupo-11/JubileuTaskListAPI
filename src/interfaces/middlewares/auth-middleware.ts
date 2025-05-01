@@ -17,7 +17,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
 
         if (typeof decoded === 'object' && decoded !== null) {
             req.user = decoded; 
-            next();
+            return next();
         } 
 
         res.status(403).json({ message: 'Invalid token structure' });

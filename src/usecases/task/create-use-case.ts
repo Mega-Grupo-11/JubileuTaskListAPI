@@ -1,12 +1,13 @@
+import { CreateTaskDTO } from "../../domain/dtos/create-task-dto";
 import { Task } from "../../domain/entities/task";
 import { ITaskRepository } from "../../domain/repositories/task-repositories";
 
 export class CreateTaskUseCase {
     constructor(private taskRepository: ITaskRepository) {}
 
-    async execute(data: Omit<Task, 'usuarioId'>, usuarioId: number): Promise<Task> {
+    async execute(task: CreateTaskDTO): Promise<Task> {
         try {
-            const newTask = await this.taskRepository.create({ ...data, usuarioId });
+            const newTask = await this.taskRepository.create(task);
 
             if (!newTask) {
                 throw new Error("Failed to create task");
