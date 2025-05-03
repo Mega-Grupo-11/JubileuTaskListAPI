@@ -10,7 +10,24 @@ export class PrismaTaskRepository implements ITaskRepository{
         const newTask = await prisma.tarefa.create({
             data: task,
         });
-        console.log("Nova tarefa criada:", newTask);
         return newTask;
     }
+
+    async getAll(userId: number): Promise<Tarefa[]> {
+        const userIdInt = Number(userId);
+
+        if (isNaN(userIdInt)) {
+            throw new Error('Invalid userId provided');
+        }
+
+        const tasks = await prisma.tarefa.findMany({
+            where: {
+                usuarioId: userIdInt,
+            },
+            orderBy: {
+                createdAt: 'desc'
+            }
+        });
+        return tasks;
+        }
 }
