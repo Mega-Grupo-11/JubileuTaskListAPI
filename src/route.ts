@@ -3,8 +3,8 @@ import { HomeController } from './interfaces/controllers/home-controller';
 import { RegisterController } from './interfaces/controllers/user/register-controller';
 import { LoginController } from './interfaces/controllers/user/login-controller';
 import { authenticateToken } from './interfaces/middlewares/auth-middleware';
-import { Task } from './domain/entities/task';
 import { CreateTaskController } from './interfaces/controllers/task/create-controller';
+import { GetAllTaskController } from './interfaces/controllers/task/get-controller';
 
 export const router  = Router();
 
@@ -20,4 +20,8 @@ router.post('/login', async (req, res) => {
 
 router.post('/task', authenticateToken, async (req, res) => {
     await CreateTaskController.create(req, res);
+});
+
+router.get('/tasks', authenticateToken, async (req, res) => {
+    await GetAllTaskController.getAllTasks(req, res);
 });
