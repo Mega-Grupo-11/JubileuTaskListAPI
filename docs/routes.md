@@ -188,3 +188,12 @@ Authorization: Bearer JWT_TOKEN
 
 - 500 Internal Server Error: Erro interno da aplicação
 
+## Visão geral de tempo de resposta Jacob Nielsen, Google Web Vitals, Experiências e benchmarks em APIs REST
+
+| Tempo de resposta | Classificação Geral              |
+|-------------------|----------------------------------|
+| 0–100ms           | Excelente (quase instantâneo)    |
+| 100–300ms         | Muito bom / aceitável            |
+| 300–500ms         | Bom, mas pode melhorar           |
+| 500ms–1s          | Limite tolerável                 |
+| > 1s              | Pode causar frustração           |
