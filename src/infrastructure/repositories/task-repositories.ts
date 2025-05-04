@@ -30,4 +30,12 @@ export class PrismaTaskRepository implements ITaskRepository{
         });
         return tasks;
         }
+    
+    async update(taskId: number, taskData: Partial<Tarefa>): Promise<Tarefa> {
+        const updatedTask = await prisma.tarefa.update({
+            where: { id: taskId },
+            data: taskData,
+        });
+        return updatedTask;
+    }
 }
