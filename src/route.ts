@@ -4,7 +4,7 @@ import { RegisterController } from './interfaces/controllers/user/register-contr
 import { LoginController } from './interfaces/controllers/user/login-controller';
 import { authenticateToken } from './interfaces/middlewares/auth-middleware';
 import { CreateTaskController } from './interfaces/controllers/task/create-controller';
-import { GetAllTaskController } from './interfaces/controllers/task/get-controller';
+import { ReadAllTaskController } from './interfaces/controllers/task/read-controller';
 import { UpdateTaskController } from './interfaces/controllers/task/update-task-controller';
 
 export const router  = Router();
@@ -24,7 +24,7 @@ router.post('/task', authenticateToken, async (req, res) => {
 });
 
 router.get('/tasks', authenticateToken, async (req, res) => {
-    await GetAllTaskController.getAllTasks(req, res);
+    await ReadAllTaskController.getAllTasks(req, res);
 });
 
 router.put('/task/:id', authenticateToken, async (req, res) => {

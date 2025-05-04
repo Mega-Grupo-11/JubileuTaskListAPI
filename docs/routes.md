@@ -21,9 +21,10 @@ Registra um novo usuário.
 
 ```json
 {
-  "nome": "pessoa",
-  "email": "pessoa@hotmail.com",
-  "passwordHash": "123"
+  "nome": "ciclano",
+  "email": "ciclano@hotmail.com",
+  "senha": "123",
+  "confirmSenha": "123"
 }
 ```
 
@@ -40,11 +41,11 @@ Status: 201 Created Size: 254 Bytes Time: 212 ms
 {
   "message": "User registered successfully",
   "user": {
-    "id": 2,
-    "nome": "pessoa",
-    "email": "pessoa@hotmail.com"
+    "id": 4,
+    "nome": "ciclano",
+    "email": "ciclano@hotmail.com"
   },
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE3NDYxMDEyNTUsImV4cCI6MTc0NjEyMjg1NX0.HL7FPuW2hCfKjqkXsx04jEv37PbIDjsJU5hxurie1UU"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE3NDYzNjMxMDUsImV4cCI6MTc0NjM4NDcwNX0.qZhdrUTXGNL_xRhYSzy1Wk3oGw50bYXdJrFwzZMBQS4"
 }
 ```
 
