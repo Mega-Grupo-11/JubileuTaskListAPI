@@ -1,6 +1,6 @@
 import { PrismaClient, Tarefa } from "@prisma/client";
 import { ITaskRepository } from "../../domain/repositories/task-repository";
-import { CreateTaskDTO } from "../../domain/dtos/create-task-dto";
+import { CreateTaskDTO } from "../../domain/dtos/task/create-task-dto";
 
 const prisma = new PrismaClient();
 
@@ -30,4 +30,12 @@ export class PrismaTaskRepository implements ITaskRepository{
         });
         return tasks;
         }
+    
+    async update(taskId: number, taskData: Partial<Tarefa>): Promise<Tarefa> {
+        const updatedTask = await prisma.tarefa.update({
+            where: { id: taskId },
+            data: taskData,
+        });
+        return updatedTask;
+    }
 }

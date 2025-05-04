@@ -21,9 +21,10 @@ Registra um novo usuário.
 
 ```json
 {
-  "nome": "pessoa",
-  "email": "pessoa@hotmail.com",
-  "passwordHash": "123"
+  "nome": "ciclano",
+  "email": "ciclano@hotmail.com",
+  "senha": "123",
+  "confirmSenha": "123"
 }
 ```
 
@@ -40,11 +41,11 @@ Status: 201 Created Size: 254 Bytes Time: 212 ms
 {
   "message": "User registered successfully",
   "user": {
-    "id": 2,
-    "nome": "pessoa",
-    "email": "pessoa@hotmail.com"
+    "id": 4,
+    "nome": "ciclano",
+    "email": "ciclano@hotmail.com"
   },
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE3NDYxMDEyNTUsImV4cCI6MTc0NjEyMjg1NX0.HL7FPuW2hCfKjqkXsx04jEv37PbIDjsJU5hxurie1UU"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE3NDYzNjMxMDUsImV4cCI6MTc0NjM4NDcwNX0.qZhdrUTXGNL_xRhYSzy1Wk3oGw50bYXdJrFwzZMBQS4"
 }
 ```
 
@@ -173,6 +174,43 @@ Status: 200 OK Size: 683 Bytes Time: 6 ms
   }
 ]
 ```
+
+### PUT `/tasks/:id`
+**Descrição:**
+Atualiza a tarefa que foi passada por id. Requer autenticação JWT.
+**Headers:**
+
+```makefile
+Authorization: Bearer JWT_TOKEN
+```
+
+```ts
+{
+  "status": false
+}
+```
+
+```json
+Status: 200 OK Size: 224 Bytes Time: 24 ms
+```
+## Resposta de Sucesso:
+
+- **Código:** 200 Successfull
+
+- **Corpo:**
+```json
+{
+  "id": 6,
+  "titulo": "consegui editar",
+  "descricao": "ir correr e caminhar no parque hoje a tarde",
+  "dataPrevista": "2025-05-06T14:00:00.000Z",
+  "prioridade": "MEDIA",
+  "status": false,
+  "createdAt": "2025-05-03T03:09:09.821Z",
+  "usuarioId": 3
+}
+```
+
 
 
 ## Autenticação

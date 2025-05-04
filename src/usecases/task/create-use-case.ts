@@ -1,4 +1,4 @@
-import { CreateTaskDTO } from "../../domain/dtos/create-task-dto";
+import { CreateTaskDTO } from "../../domain/dtos/task/create-task-dto";
 import { Task } from "../../domain/entities/task";
 import { ITaskRepository } from "../../domain/repositories/task-repository";
 

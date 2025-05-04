@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { IUserRepository } from "../../domain/repositories/user-repository";
 import { AuthService } from "../../infrastructure/jwt/auth-service";
+import { LoginResponseDTO } from "src/domain/dtos/user/login-response-dto";
 
 export class LoginUseCase {
     constructor(
@@ -8,7 +9,7 @@ export class LoginUseCase {
         private readonly authService: AuthService = new AuthService()
     ) {}
 
-    async execute(name: string, password: string): Promise<{ id: string, nome: string, email: string, token: string } | null> {
+    async execute(name: string, password: string): Promise<LoginResponseDTO | null> {
         const user = await this.userRepository.findByName(name);
 
         if (!user) return null;

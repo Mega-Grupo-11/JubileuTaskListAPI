@@ -2,7 +2,7 @@ import { Task } from "src/domain/entities/task";
 import { ITaskRepository } from "src/domain/repositories/task-repository";
 
 
-export class GetAllTaskUseCase {
+export class ReadAllTaskUseCase {
     constructor(private taskRepository: ITaskRepository) {}
 
     async execute(userId: number): Promise<Task[]> {

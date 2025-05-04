@@ -1,12 +1,12 @@
 import { Request, Response } from 'express';
 import { PrismaTaskRepository } from "../../../infrastructure/repositories/task-repositories";
-import { GetAllTaskUseCase } from "../../../usecases/task/get-all-use-case";
+import { ReadAllTaskUseCase } from "../../../usecases/task/read-all-use-case";
 
 
-export class GetAllTaskController {
+export class ReadAllTaskController {
     static async getAllTasks(req: Request, res: Response) {
         const taskRepository = new PrismaTaskRepository(); 
-        const getAllTaskUseCase = new GetAllTaskUseCase(taskRepository);
+        const getAllTaskUseCase = new ReadAllTaskUseCase(taskRepository);
         
         const userId = req.user?.id;
 
