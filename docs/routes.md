@@ -175,6 +175,43 @@ Status: 200 OK Size: 683 Bytes Time: 6 ms
 ]
 ```
 
+### PUT `/tasks/:id`
+**Descrição:**
+Atualiza a tarefa que foi passada por id. Requer autenticação JWT.
+**Headers:**
+
+```makefile
+Authorization: Bearer JWT_TOKEN
+```
+
+```ts
+{
+  "status": false
+}
+```
+
+```json
+Status: 200 OK Size: 224 Bytes Time: 24 ms
+```
+## Resposta de Sucesso:
+
+- **Código:** 200 Successfull
+
+- **Corpo:**
+```json
+{
+  "id": 6,
+  "titulo": "consegui editar",
+  "descricao": "ir correr e caminhar no parque hoje a tarde",
+  "dataPrevista": "2025-05-06T14:00:00.000Z",
+  "prioridade": "MEDIA",
+  "status": false,
+  "createdAt": "2025-05-03T03:09:09.821Z",
+  "usuarioId": 3
+}
+```
+
+
 
 ## Autenticação
 Algumas rotas exigem autenticação JWT. Envie o token no cabeçalho `Authorization`:
