@@ -13,7 +13,7 @@ let loginUseCase: LoginUseCase;
 
 describe('LoginUseCase', () => {
   beforeEach(async () => {
-    await setupMocks(); // agora corretamente assíncrono
+    await setupMocks(); 
     loginUseCase = new LoginUseCase(mockUserRepository, mockAuthService);
   });
 
@@ -21,9 +21,9 @@ describe('LoginUseCase', () => {
     const result = await loginUseCase.execute('João', senha);
 
     expect(result).toEqual({
-      id: '1',
-      nome: 'João',
-      email: 'joao@example.com',
+      id: String(user.id),
+      nome: user.nome,
+      email: user.email,
       token: 'fake-jwt-token',
     });
 
