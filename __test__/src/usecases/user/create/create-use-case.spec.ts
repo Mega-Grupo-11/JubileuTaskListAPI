@@ -53,7 +53,4 @@ describe('CreateUseCase', () => {
       .rejects
       .toThrowError('E-mail required');
   });
-
-
-
 });
