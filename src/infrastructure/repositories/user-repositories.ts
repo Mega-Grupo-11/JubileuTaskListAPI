@@ -14,7 +14,13 @@ export class PrismaUserRepository implements IUserRepository {
                 passwordHash: user.passwordHash,
             },
         });
-        return newUser;
+        return new User( 
+            newUser.nome,
+            newUser.email,
+            newUser.passwordHash,
+            newUser.id,
+            newUser.createdAt
+        );
     }
 
     async findByName(name: string): Promise<User | null> {
