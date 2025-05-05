@@ -2,6 +2,13 @@ import { vi } from 'vitest';
 import { ITaskRepository } from '../../../../../src/domain/repositories/task-repository';
 import { Task } from '../../../../../src/domain/entities/task';
 import { Prioridade, Usuario } from "@prisma/client";
+import { faker } from '@faker-js/faker';
+import bcrypt from 'bcrypt';
+
+const password = faker.internet.password();
+const saltRounds = 10;
+
+const hash = await bcrypt.hash(password, saltRounds);
 
 export const mockTaskRepository: ITaskRepository = { 
   getAll: vi.fn(),
@@ -11,9 +18,9 @@ export const mockTaskRepository: ITaskRepository = {
 
 const mockUsuario: Usuario = {
   id: 1,
-  nome: 'Mock User',
-  email: 'mock@example.com',
-  passwordHash: 'hashedpassword',
+  nome: faker.person.fullName(),
+  email: faker.internet.email(),
+  passwordHash: hash,
   createdAt: new Date(),
 };
 
