@@ -38,4 +38,11 @@ export class PrismaTaskRepository implements ITaskRepository{
         });
         return updatedTask;
     }
+    
+    async delete(taskId: number): Promise<void> {
+        await prisma.tarefa.delete({
+            where: { id: taskId },
+        });
+    }
+
 }

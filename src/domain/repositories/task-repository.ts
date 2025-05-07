@@ -5,4 +5,5 @@ export interface ITaskRepository {
     create(task: CreateTaskDTO): Promise<Tarefa>;
     getAll(userId: number): Promise<Tarefa[]>;
     update(taskId: number, taskData: Partial<Tarefa>): Promise<Tarefa>;
+    delete(taskId: number): Promise<void>;
 }

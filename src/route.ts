@@ -6,6 +6,7 @@ import { authenticateToken } from './interfaces/middlewares/auth-middleware';
 import { CreateTaskController } from './interfaces/controllers/task/create-controller';
 import { ReadAllTaskController } from './interfaces/controllers/task/read-controller';
 import { UpdateTaskController } from './interfaces/controllers/task/update-task-controller';
+import { DeleteTaskController } from './interfaces/controllers/task/delete-task-controller';
 
 export const router  = Router();
 
@@ -29,4 +30,8 @@ router.get('/tasks', authenticateToken, async (req, res) => {
 
 router.put('/task/:id', authenticateToken, async (req, res) => {
      await UpdateTaskController.update(req, res);
+});
+
+router.delete('/task/:id', authenticateToken, async (req, res) => {
+    await DeleteTaskController.delete(req, res);
 });
