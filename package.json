@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.ts",
-    "start": "ts-node server.ts",
+    "dev": "cross-env DATABASE_URL=${DATABASE_URL_DEV} prisma generate && nodemon server.ts",
+    "start": "cross-env DATABASE_URL=${DATABASE_URL_PROD} prisma generate && ts-node server.ts",
     "build": "rimraf dist && tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
@@ -25,6 +25,7 @@
     "@faker-js/faker": "^9.7.0",
     "@prisma/client": "^6.7.0",
     "bcrypt": "^5.1.1",
+    "cross-env": "^7.0.3",
     "dotenv-safe": "^9.1.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
