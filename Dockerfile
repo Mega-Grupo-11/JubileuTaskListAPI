@@ -1,15 +1,19 @@
-FROM node:lastest
+FROM node:22.14.0
 
 WORKDIR /api
 
-COPY . .
-
-RUN rm -rf node_modules
-
-RUN rm -rf .gitignore
+COPY package*.json prisma ./
 
 RUN npm install
 
-CMD ["node", "src/index.js"]
+RUN npx prisma generate
 
-EXPOSE 3000
+COPY . .
+
+RUN npm rebuild bcrypt --build-from-source
+
+RUN npm run build
+
+EXPOSE 5050
+
+CMD ["npm", "start"]
