@@ -47,7 +47,7 @@ Isso irá listar todas as imagens Docker no seu sistema. A imagem `jubileu-api` 
 Depois de gerar a imagem, você pode rodar o container a partir dela com o seguinte comando:
 
 ```bash
-docker run -d -p 5050:5050 jubileu-api
+docker run -d -p 127.0.0.1:5050:5050 jubileu-api
 ```
 
 Isso vai rodar o container e mapear a porta 5050 do container para a porta 5050 da sua máquina local, tornando a aplicação acessível.
