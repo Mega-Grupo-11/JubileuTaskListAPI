@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: api_container
+    ports:
+      - "5050:5050"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=${DATABASE_URL_PROD}
+    restart: always
+    # command: ["wait-for-it", "db:5432", "--", "npm", "start"]
+
+  db:
+    image: postgres
+    container_name: postgres_container
+    environment:
+      POSTGRES_USER: megaJunior
+      POSTGRES_PASSWORD: S&3cureP@ssw0rd
+      POSTGRES_DB: jubileu-task-api
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  pgdata:
