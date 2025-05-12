@@ -46,7 +46,7 @@ O projeto utiliza SQLite para persistência de dados. Não é necessário config
 
 4. Execute as migrations do Prisma
     ```bash
-    npx prisma migrate dev
+    npx prisma migrate dev --schema=./prisma/schema.dev.prisma
     ```
 
 5. Execute o servidor
