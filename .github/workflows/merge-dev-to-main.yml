@@ -26,13 +26,13 @@ jobs:
         run: npm install --legacy-peer-deps
 
       - name: Set DATABASE_URL for SQLite
-        run: echo "DATABASE_URL=sqlite:./prisma/dev.db" >> $GITHUB_ENV  # Aqui define o SQLite como o banco de dados
+        run: echo "DATABASE_URL=sqlite:./prisma/dev.db" >> $GITHUB_ENV
 
       - name: Generate Prisma Client
-        run: npx prisma generate
+        run: npx prisma generate --schema=prisma/schema.dev.prisma
 
-      - name: Run migrations
-        run: npx prisma migrate deploy --schema=./prisma/schema.dev.prisma  # Usando o arquivo de esquema correto
+      - name: Run migrations (this will create the migration)
+        run: npx prisma migrate dev --name init --schema=prisma/schema.dev.prisma
 
       - name: Build the project
         run: npm run build
