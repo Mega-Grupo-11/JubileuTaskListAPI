@@ -1,11 +1,11 @@
 import { Router } from 'express';
-import { HomeController } from './interfaces/controllers/home-controller';
-import { RegisterController } from './interfaces/controllers/user/register-controller';
-import { LoginController } from './interfaces/controllers/user/login-controller';
-import { authenticateToken } from './interfaces/middlewares/auth-middleware';
-import { CreateTaskController } from './interfaces/controllers/task/create-controller';
-import { ReadAllTaskController } from './interfaces/controllers/task/read-controller';
-import { UpdateTaskController } from './interfaces/controllers/task/update-task-controller';
+import { HomeController } from './../controllers/home-controller';
+import { RegisterController } from './../controllers/user/register-controller';
+import { LoginController } from './../controllers/user/login-controller';
+import { authenticateToken } from './../middlewares/auth-middleware';
+import { CreateTaskController } from './../controllers/task/create-controller';
+import { ReadAllTaskController } from './../controllers/task/read-controller';
+import { UpdateTaskController } from './../controllers/task/update-task-controller';
 
 export const router  = Router();
 

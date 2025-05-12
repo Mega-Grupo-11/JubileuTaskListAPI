@@ -27,7 +27,7 @@ O sistema está organizado com base na Clean Architecture. Aqui estão as princi
 - **Domain**: Contém as entidades (modelos) e repositórios que abstraem a persistência de dados.
 - **Infrastructure**: Responsável por integrar com tecnologias externas, como o banco de dados e a autenticação.
 
-## Instalação
+## Instalação Local (Sem Docker)
 
 Para configurar o projeto localmente, siga os passos abaixo:
 
@@ -46,7 +46,7 @@ O projeto utiliza SQLite para persistência de dados. Não é necessário config
 
 4. Execute as migrations do Prisma
     ```bash
-    npx prisma migrate dev
+    npx prisma migrate dev --schema=./prisma/schema.dev.prisma
     ```
 
 5. Execute o servidor
@@ -55,6 +55,10 @@ Inicie o servidor em modo de desenvolvimento:
     npm run dev
     ```
     O servidor estará disponível em http://localhost:5050.
+
+## Instalação com Docker
+
+Se você preferir rodar o projeto usando Docker, siga as instruções detalhadas no documento de configuração do Docker [aqui](./docs/docker-setup.md).
 
 ## Variáveis de Ambiente
 

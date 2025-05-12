@@ -1,7 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import jwt from 'jsonwebtoken';
-import { router } from './src/route';
+import { router } from '../interfaces/http/route';
 
 dotenv.config();
 

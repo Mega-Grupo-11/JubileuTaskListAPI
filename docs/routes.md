@@ -21,15 +21,15 @@ Registra um novo usuário.
 
 ```json
 {
-  "nome": "ciclano",
-  "email": "ciclano@hotmail.com",
+  "nome": "lol",
+  "email": "lol@hotmail.com",
   "senha": "123",
   "confirmSenha": "123"
 }
 ```
 
 ```json
-Status: 201 Created Size: 254 Bytes Time: 212 ms
+Status: 201 Created Size: 248 Bytes Time: 166 ms
 ```
 
 ### Resposta de Sucesso:
@@ -41,11 +41,11 @@ Status: 201 Created Size: 254 Bytes Time: 212 ms
 {
   "message": "User registered successfully",
   "user": {
-    "id": 4,
-    "nome": "ciclano",
-    "email": "ciclano@hotmail.com"
+    "id": 1,
+    "nome": "lol",
+    "email": "lol@hotmail.com"
   },
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjQiLCJpYXQiOjE3NDYzNjMxMDUsImV4cCI6MTc0NjM4NDcwNX0.qZhdrUTXGNL_xRhYSzy1Wk3oGw50bYXdJrFwzZMBQS4"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3NDcwNDg1ODksImV4cCI6MTc0NzA3MDE4OX0.oKgusVkihj5ZkHxlpjX2haEWbNrQAS9Iw7Lv9BA0o3k"
 }
 ```
 
@@ -56,12 +56,12 @@ Autentica um usuário e retorna um token JWT.
 **Body (JSON):**
 ```json
 {
-  "nome": "pessoa",
+  "nome": "lol",
   "senha": "123"
 }
 ```
 ```json
-Status: 200 OK Size: 244 Bytes Time: 87 ms
+Status: 200 OK Size: 238 Bytes Time: 69 ms
 ```
 ### Resposta de Sucesso:
 
@@ -73,11 +73,11 @@ Status: 200 OK Size: 244 Bytes Time: 87 ms
 {
   "message": "Login successful",
   "user": {
-    "id": "2",
-    "nome": "pessoa",
-    "email": "pessoa@hotmail.com"
+    "id": "1",
+    "nome": "lol",
+    "email": "lol@hotmail.com"
   },
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIiLCJpYXQiOjE3NDYxMDEzMjIsImV4cCI6MTc0NjEyMjkyMn0.SLZfrRrjMcpLoMdbBlQalPrNmIQcB53XHtuqkNensXU"
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjEiLCJpYXQiOjE3NDcwNDg2MjYsImV4cCI6MTc0NzA3MDIyNn0.2eZDHFRoIpltyLtmTJJWXGHsGO-PPGla6pW5HX9RSo4"
 }
 ```
 
@@ -92,15 +92,16 @@ Authorization: Bearer JWT_TOKEN
 ```
 ```json
 {
-  "titulo": "Estudar Clean Architecture",
-  "descricao": "Ler documentação e aplicar em projeto pessoal",
-  "dataPrevista": "2025-05-01T14:00:00.000Z",
+  "titulo": "subir commit para garantir",
+  "descricao": "consegui terminar a dockerização da api",
+  "dataPrevista": "2025-05-12T14:00:00.000Z",
   "prioridade": "MEDIA",
-  "status": false
+  "status": true
 }
 ```
 ```json
-Status: 201 Created Size: 286 Bytes Time: 25 ms
+
+Status: 201 Created Size: 280 Bytes Time: 17 ms
 ```
 ## Resposta de Sucesso:
 
@@ -111,14 +112,14 @@ Status: 201 Created Size: 286 Bytes Time: 25 ms
 {
   "message": "Task successfully created!",
   "task": {
-    "id": 3,
-    "titulo": "Estudar Clean Architecture",
-    "descricao": "Ler documentação e aplicar em projeto pessoal",
-    "dataPrevista": "2025-05-01T14:00:00.000Z",
+    "id": 2,
+    "titulo": "subir commit para garantir",
+    "descricao": "consegui terminar a dockerização da api",
+    "dataPrevista": "2025-05-12T14:00:00.000Z",
     "prioridade": "MEDIA",
     "status": true,
-    "createdAt": "2025-05-01T12:10:23.496Z",
-    "usuarioId": 2
+    "createdAt": "2025-05-12T11:18:11.906Z",
+    "usuarioId": 1
   }
 }
 ```
@@ -133,7 +134,7 @@ Authorization: Bearer JWT_TOKEN
 ```
 
 ```json
-Status: 200 OK Size: 683 Bytes Time: 6 ms
+Status: 200 OK Size: 459 Bytes Time: 9 ms
 ```
 ## Resposta de Sucesso:
 
@@ -143,34 +144,24 @@ Status: 200 OK Size: 683 Bytes Time: 6 ms
 ```json
 [
   {
-    "id": 6,
+    "id": 2,
+    "titulo": "subir commit para garantir",
+    "descricao": "consegui terminar a dockerização da api",
+    "dataPrevista": "2025-05-12T14:00:00.000Z",
+    "prioridade": "MEDIA",
+    "status": true,
+    "createdAt": "2025-05-12T11:18:11.906Z",
+    "usuarioId": 1
+  },
+  {
+    "id": 1,
     "titulo": "correr no parque",
     "descricao": "ir correr e caminhar no parque hoje a tarde",
     "dataPrevista": "2025-05-06T14:00:00.000Z",
     "prioridade": "MEDIA",
     "status": true,
-    "createdAt": "2025-05-03T03:09:09.821Z",
-    "usuarioId": 3
-  },
-  {
-    "id": 5,
-    "titulo": "correr no parque",
-    "descricao": "ir correr e caminhar no parque hoje a tarde",
-    "dataPrevista": "2025-05-04T14:00:00.000Z",
-    "prioridade": "MEDIA",
-    "status": true,
-    "createdAt": "2025-05-03T03:08:57.137Z",
-    "usuarioId": 3
-  },
-  {
-    "id": 4,
-    "titulo": "Estudar sobre o projeto",
-    "descricao": "Ler documentação e aplicar em novas rotas",
-    "dataPrevista": "2025-05-04T14:00:00.000Z",
-    "prioridade": "MEDIA",
-    "status": true,
-    "createdAt": "2025-05-01T14:22:42.990Z",
-    "usuarioId": 3
+    "createdAt": "2025-05-12T11:17:35.829Z",
+    "usuarioId": 1
   }
 ]
 ```
@@ -191,7 +182,7 @@ Authorization: Bearer JWT_TOKEN
 ```
 
 ```json
-Status: 200 OK Size: 224 Bytes Time: 24 ms
+Status: 200 OK Size: 225 Bytes Time: 10 ms
 ```
 ## Resposta de Sucesso:
 
@@ -200,14 +191,14 @@ Status: 200 OK Size: 224 Bytes Time: 24 ms
 - **Corpo:**
 ```json
 {
-  "id": 6,
-  "titulo": "consegui editar",
+  "id": 1,
+  "titulo": "correr no parque",
   "descricao": "ir correr e caminhar no parque hoje a tarde",
   "dataPrevista": "2025-05-06T14:00:00.000Z",
   "prioridade": "MEDIA",
   "status": false,
-  "createdAt": "2025-05-03T03:09:09.821Z",
-  "usuarioId": 3
+  "createdAt": "2025-05-12T11:17:35.829Z",
+  "usuarioId": 1
 }
 ```
 

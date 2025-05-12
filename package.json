@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "dev": "cross-env DATABASE_URL=${DATABASE_URL_DEV} prisma generate && nodemon server.ts",
-    "start": "cross-env DATABASE_URL=${DATABASE_URL_PROD} prisma generate && ts-node server.ts",
+    "dev": "cross-env DATABASE_URL=${DATABASE_URL_DEV} prisma generate --schema=./prisma/schema.dev.prisma && nodemon src/main/server.ts",
+    "start": "cross-env DATABASE_URL=${DATABASE_URL_PROD} prisma generate --schema=./prisma/schema.prisma && node dist/main/server.js",
     "build": "rimraf dist && tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
@@ -34,6 +34,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "@vitest/coverage-c8": "^0.33.0",
