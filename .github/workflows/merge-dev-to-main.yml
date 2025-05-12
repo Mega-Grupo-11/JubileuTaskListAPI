@@ -12,20 +12,6 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:13
-        env:
-          POSTGRES_DB: jubilee_test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: password
-        ports:
-          - 5432:5432
-        options: >-
-          --health-cmd="pg_isready -U postgres"
-          --health-interval=10s
-          --health-timeout=5s
-          --health-retries=5
 
     steps:
       - name: Checkout code
@@ -34,16 +20,19 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x' 
+          node-version: 18.x 
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
+
+      - name: Set DATABASE_URL for SQLite
+        run: echo "DATABASE_URL=sqlite:./prisma/dev.db" >> $GITHUB_ENV  # Aqui define o SQLite como o banco de dados
 
       - name: Generate Prisma Client
         run: npx prisma generate
 
       - name: Run migrations
-        run: npx prisma migrate deploy
+        run: npx prisma migrate deploy --schema=./prisma/schema.dev.prisma  # Usando o arquivo de esquema correto
 
       - name: Build the project
         run: npm run build
