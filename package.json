@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "dev": "cross-env DATABASE_URL=${DATABASE_URL_DEV} prisma generate && nodemon src/main/server.ts",
-    "start": "cross-env DATABASE_URL=${DATABASE_URL_PROD} prisma generate && node dist/main/server.js",
+    "dev": "cross-env DATABASE_URL=${DATABASE_URL_DEV} prisma generate --schema=./prisma/schema.dev.prisma && nodemon src/main/server.ts",
+    "start": "cross-env DATABASE_URL=${DATABASE_URL_PROD} prisma generate --schema=./prisma/schema.prisma && node dist/main/server.js",
     "build": "rimraf dist && tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
