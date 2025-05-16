@@ -7,4 +7,10 @@ export interface ITaskRepository {
     update(taskId: number, taskData: Partial<Tarefa>): Promise<Tarefa>;
     delete(taskId: number): Promise<void>;
     deleteCompletedTasks(): Promise<void>;
+    findById(taskId: number): Promise<Tarefa[]>;
+    searchTasks(
+        title: string,
+        filters?: { priority?: string; date?: string },
+        sort?: { field: string; order: "asc" | "desc" }
+    ): Promise<Tarefa[]>;
 }

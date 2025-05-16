@@ -51,4 +51,39 @@ export class PrismaTaskRepository implements ITaskRepository{
         });
     }
 
+    async findById(taskId: number): Promise<Tarefa[]> {
+        const task = await prisma.tarefa.findMany({
+            where: { id: taskId },
+        });
+        return task;
+    }
+
+    async searchTasks(
+        title: string,
+        filters?: { priority?: string; date?: string },
+        sort?: { field: string; order: "asc" | "desc" }
+    ): Promise<Tarefa[]> {
+        const where: any = {
+            titulo: { contains: title, mode: "insensitive" },
+        };
+
+        if (filters?.priority) {
+            where.prioridade = filters.priority.toUpperCase();
+        }
+
+        if (filters?.date) {
+            where.dataPrevista = new Date(filters.date);
+        }
+
+        const orderBy: any = {};
+        if (sort?.field) {
+            orderBy[sort.field] = sort.order;
+        }
+
+        return await prisma.tarefa.findMany({
+            where,
+            orderBy,
+        });
+    }
+
 }
