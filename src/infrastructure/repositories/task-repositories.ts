@@ -45,4 +45,10 @@ export class PrismaTaskRepository implements ITaskRepository{
         });
     }
 
+    async deleteCompletedTasks(): Promise<void> {
+        await prisma.tarefa.deleteMany({
+            where: { status: true },
+        });
+    }
+
 }

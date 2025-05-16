@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { DeleteTaskUseCase } from "../../../usecases/task/delete-task-use-case";
 import { PrismaTaskRepository } from "../../../infrastructure/repositories/task-repositories";
+import { DeleteCompletedTasksUseCase } from "../../../usecases/task/delete-completed-use-case";
 
 export class DeleteTaskController {
     static async delete(req: Request, res: Response) {
@@ -19,6 +20,18 @@ export class DeleteTaskController {
         } catch (error) {
             const errorMessage = error instanceof Error ? error.message : "Unknown error";
             return res.status(500).json({ message: "Error deleting task", error: errorMessage });
+        }
+    }
+    static async deleteCompletedTasks(req: Request, res: Response) {
+        const taskRepository = new PrismaTaskRepository();
+
+        try {
+            const deleteCompletedTasksUseCase = new DeleteCompletedTasksUseCase(taskRepository);
+            await deleteCompletedTasksUseCase.execute();
+            return res.status(204).send();
+        } catch (error) {
+            const errorMessage = error instanceof Error ? error.message : "Unknown error";
+            return res.status(500).json({ message: "Error deleting completed tasks", error: errorMessage });
         }
     }
 }
