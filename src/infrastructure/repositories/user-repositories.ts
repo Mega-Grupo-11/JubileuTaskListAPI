@@ -34,11 +34,18 @@ export class PrismaUserRepository implements IUserRepository {
 
     async findByEmail(email: string): Promise<User | null> {
         const user = await prisma.usuario.findFirst({
-            where: {
-                email: email
-            },
+            where: { email },
         });
-        return user;
+
+        if (!user) return null;
+
+        return new User(
+            user.nome,
+            user.email,
+            user.passwordHash,
+            user.id,
+            user.createdAt
+        );
     }
 
 }
