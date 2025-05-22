@@ -56,7 +56,7 @@ Autentica um usuário e retorna um token JWT.
 **Body (JSON):**
 ```json
 {
-  "nome": "lol",
+  "email": "lol@hotmail.com",
   "senha": "123"
 }
 ```
