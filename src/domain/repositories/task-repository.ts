@@ -1,4 +1,4 @@
-import { Tarefa } from "@prisma/client";
+import { Tarefa } from "prisma/client";
 import { CreateTaskDTO } from "../dtos/task/create-task-dto";
 
 export interface ITaskRepository {

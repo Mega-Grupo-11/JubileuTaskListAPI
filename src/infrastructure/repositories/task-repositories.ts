@@ -1,8 +1,8 @@
-import { PrismaClient, Tarefa } from "@prisma/client";
 import { ITaskRepository } from "../../domain/repositories/task-repository";
 import { CreateTaskDTO } from "../../domain/dtos/task/create-task-dto";
+import { prisma } from "../../lib/prisma";
+import { Tarefa } from "prisma/client";
 
-const prisma = new PrismaClient();
 
 export class PrismaTaskRepository implements ITaskRepository{
     
