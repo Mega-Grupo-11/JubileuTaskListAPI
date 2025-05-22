@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- CreateEnum
 CREATE TYPE "Prioridade" AS ENUM ('BAIXA', 'MEDIA', 'ALTA');
 

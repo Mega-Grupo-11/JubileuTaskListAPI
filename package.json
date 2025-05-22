@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon src/main/server.ts",
-    "start": "prisma generate && node dist/main/server.js",
+    "dev": "prisma generate && prisma migrate dev && nodemon src/main/server.ts",
+    "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"

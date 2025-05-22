@@ -10,10 +10,8 @@ RUN npx prisma generate
 
 COPY . .
 
-# RUN npm rebuild bcrypt --build-from-source
-
 RUN npm run build
 
-EXPOSE 5050
+EXPOSE 3001
 
 CMD ["npm", "start"]

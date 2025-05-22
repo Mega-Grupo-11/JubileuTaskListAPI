@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   api:
     build:
@@ -6,13 +5,12 @@ services:
       dockerfile: Dockerfile
     container_name: api_container
     ports:
-      - "5050:5050"
+      - "3002:3001"
     environment:
       DATABASE_URL: postgresql://megaJunior:123@db:5432/jubileutaskapi
     depends_on:
       - db
     restart: always
-    command: ["npm start"]
 
   db:
     image: postgres
