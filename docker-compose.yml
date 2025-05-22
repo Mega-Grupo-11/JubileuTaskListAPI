@@ -6,10 +6,13 @@ services:
       dockerfile: Dockerfile
     container_name: api_container
     ports:
-      - "5050:5050"
+      - "${PORT}:${PORT}"
+    env_file:
+      - .env
     depends_on:
       - db
     environment:
+      - PORT=${PORT}  
       - DATABASE_URL=${DATABASE_URL_PROD}
     restart: always
     command: ["/bin/sh", "-c", "/usr/local/bin/wait-for-it db:5432 -- cross-env DATABASE_URL=${DATABASE_URL_PROD} npx prisma generate && npx prisma migrate dev --name init && npm start"]
