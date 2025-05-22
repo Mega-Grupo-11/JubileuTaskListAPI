@@ -4,8 +4,10 @@ import { router } from '../interfaces/http/route';
 
 dotenv.config();
 
+const port = process.env.PORT || 3002;
+
 const server = express();
-const PORT = 5050;
+const PORT = port;
 
 server.use(express.json());
 server.use(router);
