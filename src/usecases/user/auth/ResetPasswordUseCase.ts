@@ -6,11 +6,12 @@ export class ResetPasswordUseCase {
 
   async execute(token: string, newPassword: string): Promise<void> {
     const user = await this.userRepo.findByResetToken(token);
-    if (!user || user.tokenExpires < new Date()) {
+
+    if (!user || user.tokenExpires == null || user.tokenExpires < new Date()) {
       throw new Error("Token inválido ou expirado");
     }
 
-    user.password = await bcrypt.hash(newPassword, 10);
+    user.passwordHash = await bcrypt.hash(newPassword, 10);
     user.resetToken = null;
     user.tokenExpires = null;
     await this.userRepo.save(user);
