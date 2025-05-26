@@ -38,6 +38,8 @@ model Usuario {
   nome         String
   email        String    @unique
   passwordHash String
+  resetToken    String?  
+  tokenExpires  DateTime?
   createdAt    DateTime  @default(now())
   tarefas      Tarefa[]
 }

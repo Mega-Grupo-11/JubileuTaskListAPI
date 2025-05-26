@@ -48,4 +48,42 @@ export class PrismaUserRepository implements IUserRepository {
         );
     }
 
+    async save(user: User): Promise<User> {
+        const updatedUser = await prisma.usuario.update({
+            where: { id: user.id },
+            data: {
+                nome: user.nome,
+                email: user.email,
+                passwordHash: user.passwordHash,
+            },
+        });
+        return new User(
+            updatedUser.nome,
+            updatedUser.email,
+            updatedUser.passwordHash,
+            updatedUser.id,
+            updatedUser.createdAt
+        );
+    }
+
+    async findByResetToken(token: string): Promise<User | null> {
+        const user = await prisma.usuario.findFirst({
+            where: {
+                resetToken: token ,
+                tokenExpires: {
+                    gt: new Date(),
+                },
+            },
+        });
+
+        if (!user) return null;
+
+        return new User(
+            user.nome,
+            user.email,
+            user.passwordHash,
+            user.id,
+            user.createdAt
+        );
+    }
 }
