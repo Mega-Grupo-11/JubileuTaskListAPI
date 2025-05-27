@@ -231,6 +231,28 @@ Redefinir senha
 Se você não solicitou essa alteração, ignore este e-mail.
 ```
 
+### POST `/reset-password`
+**Descrição:**
+Redefinição de senha
+
+```ts
+{
+  "token": "c6a4855befbd0f094a1f9c4f179c700c90cdfc1f73589364b53c099a25a46766",
+  "newPassword": "hahaha"
+}
+```
+```json
+Status: 200 OK Size: 42 Bytes Time: 7.63 s
+```
+
+- **Corpo:**
+```json
+{
+  "message": "Senha redefinida com sucesso"
+}
+```
+
+
 
 
 
