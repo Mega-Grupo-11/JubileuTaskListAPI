@@ -1,17 +1,30 @@
 import nodemailer from "nodemailer";
 import { IMailerService } from "../../domain/services/IMailerService";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
+
+require('dotenv').config({ path: '.env' });
 
 export class NodemailerService implements IMailerService {
-  async send(to: string, subject: string, body: string): Promise<void> {
-    const transporter = nodemailer.createTransport({
-        
-    });
+  private transporter;
 
-    await transporter.sendMail({
-      from: "naoresponda@seusite.com",
+  constructor() {
+    this.transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: true,
+      auth: {
+        user: process.env.USER,
+        pass: process.env.PASSWORD,
+      },
+    } as SMTPTransport.Options);
+  }
+
+  async sendMail({ to, subject, html }: { to: string; subject: string; html: string; }): Promise<void> {
+    await this.transporter.sendMail({
+      from: process.env.USER,
       to,
       subject,
-      html: body,
+      html,
     });
   }
 }
