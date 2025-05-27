@@ -13,8 +13,8 @@ export class NodemailerService implements IMailerService {
       port: Number(process.env.SMTP_PORT),
       secure: true,
       auth: {
-        user: process.env.USER,
-        pass: process.env.PASSWORD,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
       },
     } as SMTPTransport.Options);
   }

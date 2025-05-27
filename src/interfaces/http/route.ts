@@ -7,9 +7,9 @@ import { CreateTaskController } from './../controllers/task/create-controller';
 import { ReadAllTaskController } from './../controllers/task/read-controller';
 import { UpdateTaskController } from './../controllers/task/update-task-controller';
 import { ForgotPasswordController } from '../controllers/user/auth/forgot-password-controller';
-import { ForgotPasswordUseCase } from 'src/usecases/user/auth/ForgotPasswordUseCase';
-import { PrismaUserRepository } from 'src/infrastructure/repositories/user-repositories';
-import { NodemailerService } from 'src/infrastructure/services/NodemailerService';
+import { ForgotPasswordUseCase } from '../../usecases/user/auth/ForgotPasswordUseCase';
+import { PrismaUserRepository } from '../../infrastructure/repositories/user-repositories';
+import { NodemailerService } from '../../infrastructure/services/NodemailerService';
 
 export const router  = Router();
 
