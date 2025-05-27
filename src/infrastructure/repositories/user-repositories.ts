@@ -55,6 +55,8 @@ export class PrismaUserRepository implements IUserRepository {
                 nome: user.nome,
                 email: user.email,
                 passwordHash: user.passwordHash,
+                resetToken: user.resetToken,
+                tokenExpires: user.tokenExpires,
             },
         });
         return new User(
@@ -62,7 +64,9 @@ export class PrismaUserRepository implements IUserRepository {
             updatedUser.email,
             updatedUser.passwordHash,
             updatedUser.id,
-            updatedUser.createdAt
+            updatedUser.createdAt,
+            updatedUser.resetToken,
+            updatedUser.tokenExpires
         );
     }
 
@@ -83,7 +87,9 @@ export class PrismaUserRepository implements IUserRepository {
             user.email,
             user.passwordHash,
             user.id,
-            user.createdAt
+            user.createdAt,
+            user.resetToken,
+            user.tokenExpires
         );
     }
 }
