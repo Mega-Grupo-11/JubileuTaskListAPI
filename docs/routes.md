@@ -201,6 +201,36 @@ Status: 200 OK Size: 225 Bytes Time: 10 ms
   "usuarioId": 1
 }
 ```
+### POST `/forgot-password`
+**Descrição:**
+Recuperação de senha
+
+```ts
+{
+  "email": lol@gmail.com
+}
+```
+```json
+Status: 200 OK Size: 28 Bytes Time: 10.99 s
+```
+- **Corpo:**
+```json
+{
+  "message": "E-mail enviado"
+}
+```
+
+- **Email:**
+```bash
+Olá,
+
+Você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha:
+
+Redefinir senha
+
+Se você não solicitou essa alteração, ignore este e-mail.
+```
+
 
 
 
