@@ -1,6 +1,9 @@
 import { IUserRepository } from "../../../domain/repositories/user-repository";
 import { IMailerService } from "../../../domain/services/IMailerService";
 import crypto from "crypto";
+require('dotenv').config({ path: '.env' });
+
+const PORT = process.env.PORT || 3002;
 
 export class ForgotPasswordUseCase {
   constructor(
@@ -19,7 +22,12 @@ export class ForgotPasswordUseCase {
     user.tokenExpires = tokenExpires;
     await this.userRepo.save(user);
     
-    const resetLink = `http://localhost:3002/resetar-senha?token=${token}`;
-    await this.mailer.send(email, "Recuperação de senha", `Clique aqui: ${resetLink}`);
+    const resetLink = `http://localhost:${PORT}/reset-password?token=${token}`;
+    
+    await this.mailer.sendMail({
+      to: email,
+      subject: "Recuperação de senha",
+      html: `Clique aqui: ${resetLink}`
+    });
   }
 }
