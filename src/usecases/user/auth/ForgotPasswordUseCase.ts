@@ -27,7 +27,16 @@ export class ForgotPasswordUseCase {
     await this.mailer.sendMail({
       to: email,
       subject: "Recuperação de senha",
-      html: `Clique aqui: ${resetLink}`
+      html: this.email(resetLink) 
     });
+  }
+
+  private email(resetLink: string): string {
+    return `
+      <p>Olá,</p>
+      <p>Você solicitou a recuperação de senha. Clique no link abaixo para redefinir sua senha:</p>
+      <p><a href="${resetLink}">Redefinir senha</a></p>
+      <p>Se você não solicitou essa alteração, ignore este e-mail.</p>
+    `;
   }
 }
