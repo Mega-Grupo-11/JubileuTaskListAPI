@@ -12,7 +12,7 @@
           "tsconfig-paths/register"
         ],
         "args": [
-          "${workspaceFolder}/server.ts"
+          "${workspaceFolder}/src/main/server.ts"
         ],
         "cwd": "${workspaceFolder}",
         "skipFiles": ["<node_internals>/**", "**/node_modules/**"]
