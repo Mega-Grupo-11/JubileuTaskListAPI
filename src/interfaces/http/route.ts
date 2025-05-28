@@ -4,8 +4,9 @@ import { RegisterController } from './../controllers/user/register-controller';
 import { LoginController } from './../controllers/user/login-controller';
 import { authenticateToken } from './../middlewares/auth-middleware';
 import { CreateTaskController } from './../controllers/task/create-controller';
-import { ReadAllTaskController } from './../controllers/task/read-controller';
+import { ReadTaskController } from './../controllers/task/read-controller';
 import { UpdateTaskController } from './../controllers/task/update-task-controller';
+import { DeleteTaskController } from './../controllers/task/delete-task-controller';
 
 export const router  = Router();
 
