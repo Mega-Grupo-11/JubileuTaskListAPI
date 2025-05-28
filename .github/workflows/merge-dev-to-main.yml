@@ -12,6 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,10 +20,22 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 22.x
+          node-version: 22.14.0 
 
-      - name: Install, build and test
-        run: |
-          npm install --legacy-peer-deps
-          npm run build
-          npm test
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Set DATABASE_URL for SQLite
+        run: echo "DATABASE_URL=sqlite:./prisma/dev.db" >> $GITHUB_ENV
+
+      - name: Generate Prisma Client
+        run: npx prisma generate --schema=prisma/schema.dev.prisma
+
+      - name: Run migrations (this will create the migration)
+        run: npx prisma migrate dev --name init --schema=prisma/schema.dev.prisma
+
+      - name: Build the project
+        run: npm run build
+
+      - name: Run tests
+        run: npm test

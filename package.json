@@ -15,8 +15,8 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.ts",
-    "start": "ts-node server.ts",
+    "dev": "prisma generate && prisma migrate dev && nodemon src/main/server.ts",
+    "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage"
@@ -25,6 +25,9 @@
     "@faker-js/faker": "^9.7.0",
     "@prisma/client": "^6.7.0",
     "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.5.0",
     "dotenv-safe": "^9.1.0",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
@@ -33,6 +36,8 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.18",
+    "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.1",
     "@types/jsonwebtoken": "^9.0.9",
     "@vitest/coverage-c8": "^0.33.0",

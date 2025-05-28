@@ -1,8 +1,8 @@
-import { PrismaClient } from "@prisma/client";
+
 import { User } from "../../domain/entities/user";
 import { IUserRepository } from "../../domain/repositories/user-repository";
+import { prisma } from "../../lib/prisma";
 
-const prisma = new PrismaClient();
 
 export class PrismaUserRepository implements IUserRepository {
 
@@ -34,11 +34,18 @@ export class PrismaUserRepository implements IUserRepository {
 
     async findByEmail(email: string): Promise<User | null> {
         const user = await prisma.usuario.findFirst({
-            where: {
-                email: email
-            },
+            where: { email },
         });
-        return user;
+
+        if (!user) return null;
+
+        return new User(
+            user.nome,
+            user.email,
+            user.passwordHash,
+            user.id,
+            user.createdAt
+        );
     }
 
 }

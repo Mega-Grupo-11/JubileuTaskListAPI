@@ -4,17 +4,17 @@ import { LoginUseCase } from "../../../usecases/user/login-use-case";
 
 export class LoginController {
     static async login(req: Request, res: Response) {
-        const { nome, senha } = req.body;
+        const { email, senha } = req.body;
 
-        if (!nome || !senha) {
-            return res.status(400).json({ message: "All fields are required" });
+        if (!email || !senha) {
+            return res.status(400).json({ message: "Email and password are required" });
         }
 
         const userRepository = new PrismaUserRepository();
         const loginUseCase = new LoginUseCase(userRepository);
         
         try {
-            const result = await loginUseCase.execute(nome, senha);
+            const result = await loginUseCase.execute(email, senha);
 
             if (!result) {
                 return res.status(401).json({ message: "Invalid credentials" });

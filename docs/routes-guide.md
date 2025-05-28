@@ -15,19 +15,21 @@ src/
 ├── interfaces/
 │   ├── controllers/
 │       └── task/
-│           └── create-controller.ts     ← Controller que chama o usecase
-│   
+│       |    └── create-controller.ts     ← Controller que chama o usecase
+│       └── http/
+|            └── routes.ts     ← definição das rotas
+|           
 ├── infrastructure/
 │   └── repositories/
 │       └── task-repositoriy.ts          ← Implementação real do repositório
 │
-├── route.ts                            ← Definição da rota
-
+├── main/
+|     └── server.ts     ← inicialização servidor
 ```
 
 ## 1. Criando a rota com requisito de autenticação `authenticateToken`
 
-**Arquivo:** `./routes.js`
+**Arquivo:** `./interfaces/http/routes.js`
 
 ```ts
 router.post('/task', authenticateToken, async (req, res) => {
