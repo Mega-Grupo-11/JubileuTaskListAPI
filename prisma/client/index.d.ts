@@ -2168,6 +2168,8 @@ export namespace Prisma {
     nome: string | null
     email: string | null
     passwordHash: string | null
+    resetToken: string | null
+    tokenExpires: Date | null
     createdAt: Date | null
   }
 
@@ -2176,6 +2178,8 @@ export namespace Prisma {
     nome: string | null
     email: string | null
     passwordHash: string | null
+    resetToken: string | null
+    tokenExpires: Date | null
     createdAt: Date | null
   }
 
@@ -2184,6 +2188,8 @@ export namespace Prisma {
     nome: number
     email: number
     passwordHash: number
+    resetToken: number
+    tokenExpires: number
     createdAt: number
     _all: number
   }
@@ -2202,6 +2208,8 @@ export namespace Prisma {
     nome?: true
     email?: true
     passwordHash?: true
+    resetToken?: true
+    tokenExpires?: true
     createdAt?: true
   }
 
@@ -2210,6 +2218,8 @@ export namespace Prisma {
     nome?: true
     email?: true
     passwordHash?: true
+    resetToken?: true
+    tokenExpires?: true
     createdAt?: true
   }
 
@@ -2218,6 +2228,8 @@ export namespace Prisma {
     nome?: true
     email?: true
     passwordHash?: true
+    resetToken?: true
+    tokenExpires?: true
     createdAt?: true
     _all?: true
   }
@@ -2313,6 +2325,8 @@ export namespace Prisma {
     nome: string
     email: string
     passwordHash: string
+    resetToken: string | null
+    tokenExpires: Date | null
     createdAt: Date
     _count: UsuarioCountAggregateOutputType | null
     _avg: UsuarioAvgAggregateOutputType | null
@@ -2340,6 +2354,8 @@ export namespace Prisma {
     nome?: boolean
     email?: boolean
     passwordHash?: boolean
+    resetToken?: boolean
+    tokenExpires?: boolean
     createdAt?: boolean
     tarefas?: boolean | Usuario$tarefasArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
@@ -2350,6 +2366,8 @@ export namespace Prisma {
     nome?: boolean
     email?: boolean
     passwordHash?: boolean
+    resetToken?: boolean
+    tokenExpires?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["usuario"]>
 
@@ -2358,6 +2376,8 @@ export namespace Prisma {
     nome?: boolean
     email?: boolean
     passwordHash?: boolean
+    resetToken?: boolean
+    tokenExpires?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["usuario"]>
 
@@ -2366,10 +2386,12 @@ export namespace Prisma {
     nome?: boolean
     email?: boolean
     passwordHash?: boolean
+    resetToken?: boolean
+    tokenExpires?: boolean
     createdAt?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "email" | "passwordHash" | "createdAt", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "email" | "passwordHash" | "resetToken" | "tokenExpires" | "createdAt", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tarefas?: boolean | Usuario$tarefasArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
@@ -2387,6 +2409,8 @@ export namespace Prisma {
       nome: string
       email: string
       passwordHash: string
+      resetToken: string | null
+      tokenExpires: Date | null
       createdAt: Date
     }, ExtArgs["result"]["usuario"]>
     composites: {}
@@ -2816,6 +2840,8 @@ export namespace Prisma {
     readonly nome: FieldRef<"Usuario", 'String'>
     readonly email: FieldRef<"Usuario", 'String'>
     readonly passwordHash: FieldRef<"Usuario", 'String'>
+    readonly resetToken: FieldRef<"Usuario", 'String'>
+    readonly tokenExpires: FieldRef<"Usuario", 'DateTime'>
     readonly createdAt: FieldRef<"Usuario", 'DateTime'>
   }
     
@@ -3280,6 +3306,8 @@ export namespace Prisma {
     nome: 'nome',
     email: 'email',
     passwordHash: 'passwordHash',
+    resetToken: 'resetToken',
+    tokenExpires: 'tokenExpires',
     createdAt: 'createdAt'
   };
 
@@ -3475,6 +3503,8 @@ export namespace Prisma {
     nome?: StringFilter<"Usuario"> | string
     email?: StringFilter<"Usuario"> | string
     passwordHash?: StringFilter<"Usuario"> | string
+    resetToken?: StringNullableFilter<"Usuario"> | string | null
+    tokenExpires?: DateTimeNullableFilter<"Usuario"> | Date | string | null
     createdAt?: DateTimeFilter<"Usuario"> | Date | string
     tarefas?: TarefaListRelationFilter
   }
@@ -3484,6 +3514,8 @@ export namespace Prisma {
     nome?: SortOrder
     email?: SortOrder
     passwordHash?: SortOrder
+    resetToken?: SortOrderInput | SortOrder
+    tokenExpires?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     tarefas?: TarefaOrderByRelationAggregateInput
   }
@@ -3496,6 +3528,8 @@ export namespace Prisma {
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     nome?: StringFilter<"Usuario"> | string
     passwordHash?: StringFilter<"Usuario"> | string
+    resetToken?: StringNullableFilter<"Usuario"> | string | null
+    tokenExpires?: DateTimeNullableFilter<"Usuario"> | Date | string | null
     createdAt?: DateTimeFilter<"Usuario"> | Date | string
     tarefas?: TarefaListRelationFilter
   }, "id" | "email">
@@ -3505,6 +3539,8 @@ export namespace Prisma {
     nome?: SortOrder
     email?: SortOrder
     passwordHash?: SortOrder
+    resetToken?: SortOrderInput | SortOrder
+    tokenExpires?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: UsuarioCountOrderByAggregateInput
     _avg?: UsuarioAvgOrderByAggregateInput
@@ -3521,6 +3557,8 @@ export namespace Prisma {
     nome?: StringWithAggregatesFilter<"Usuario"> | string
     email?: StringWithAggregatesFilter<"Usuario"> | string
     passwordHash?: StringWithAggregatesFilter<"Usuario"> | string
+    resetToken?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
+    tokenExpires?: DateTimeNullableWithAggregatesFilter<"Usuario"> | Date | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
   }
 
@@ -3601,6 +3639,8 @@ export namespace Prisma {
     nome: string
     email: string
     passwordHash: string
+    resetToken?: string | null
+    tokenExpires?: Date | string | null
     createdAt?: Date | string
     tarefas?: TarefaCreateNestedManyWithoutUsuarioInput
   }
@@ -3610,6 +3650,8 @@ export namespace Prisma {
     nome: string
     email: string
     passwordHash: string
+    resetToken?: string | null
+    tokenExpires?: Date | string | null
     createdAt?: Date | string
     tarefas?: TarefaUncheckedCreateNestedManyWithoutUsuarioInput
   }
@@ -3618,6 +3660,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tarefas?: TarefaUpdateManyWithoutUsuarioNestedInput
   }
@@ -3627,6 +3671,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     tarefas?: TarefaUncheckedUpdateManyWithoutUsuarioNestedInput
   }
@@ -3636,6 +3682,8 @@ export namespace Prisma {
     nome: string
     email: string
     passwordHash: string
+    resetToken?: string | null
+    tokenExpires?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -3643,6 +3691,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3651,6 +3701,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -3855,6 +3907,17 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type TarefaListRelationFilter = {
     every?: TarefaWhereInput
     some?: TarefaWhereInput
@@ -3870,6 +3933,8 @@ export namespace Prisma {
     nome?: SortOrder
     email?: SortOrder
     passwordHash?: SortOrder
+    resetToken?: SortOrder
+    tokenExpires?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -3882,6 +3947,8 @@ export namespace Prisma {
     nome?: SortOrder
     email?: SortOrder
     passwordHash?: SortOrder
+    resetToken?: SortOrder
+    tokenExpires?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -3890,11 +3957,27 @@ export namespace Prisma {
     nome?: SortOrder
     email?: SortOrder
     passwordHash?: SortOrder
+    resetToken?: SortOrder
+    tokenExpires?: SortOrder
     createdAt?: SortOrder
   }
 
   export type UsuarioSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type UsuarioCreateNestedOneWithoutTarefasInput = {
@@ -3951,6 +4034,10 @@ export namespace Prisma {
     connectOrCreate?: TarefaCreateOrConnectWithoutUsuarioInput | TarefaCreateOrConnectWithoutUsuarioInput[]
     createMany?: TarefaCreateManyUsuarioInputEnvelope
     connect?: TarefaWhereUniqueInput | TarefaWhereUniqueInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type TarefaUpdateManyWithoutUsuarioNestedInput = {
@@ -4147,10 +4234,37 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type UsuarioCreateWithoutTarefasInput = {
     nome: string
     email: string
     passwordHash: string
+    resetToken?: string | null
+    tokenExpires?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -4159,6 +4273,8 @@ export namespace Prisma {
     nome: string
     email: string
     passwordHash: string
+    resetToken?: string | null
+    tokenExpires?: Date | string | null
     createdAt?: Date | string
   }
 
@@ -4182,6 +4298,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -4190,6 +4308,8 @@ export namespace Prisma {
     nome?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
+    resetToken?: NullableStringFieldUpdateOperationsInput | string | null
+    tokenExpires?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
