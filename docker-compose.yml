@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   api:
     build:
@@ -6,14 +5,11 @@ services:
       dockerfile: Dockerfile
     container_name: api_container
     ports:
-      - "${PORT}:${PORT}"
-    env_file:
-      - .env
+      - "3002:3001"
+    environment:
+      DATABASE_URL: postgresql://megaJunior:123@db:5432/jubileutaskapi
     depends_on:
       - db
-    environment:
-      - PORT=${PORT}  
-      - DATABASE_URL=${DATABASE_URL_PROD}
     restart: always
     command: >
       /bin/sh -c "wait-for-it db:5432 --
@@ -31,9 +27,10 @@ services:
       POSTGRES_DB: jubileutaskapi
     ports:
       - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
+    # volumes:
+    #   - pgdata:/var/lib/postgresql/data
     restart: always
 
 volumes:
   pgdata:
+# /bin/sh", "-c", "/usr/local/bin/wait-for-it db:5432 -- cross-env DATABASE_URL=${DATABASE_URL_PROD} npx prisma generate && npx prisma migrate dev --name init && 

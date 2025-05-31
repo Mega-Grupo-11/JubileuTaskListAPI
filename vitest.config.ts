@@ -9,4 +9,12 @@ export default defineConfig({
       reporter: ['text', 'html'],
     },
   },
+  server: {
+    port: 5050,
+    host: true,
+    open: true,
+    cors: {
+      origin: '*',
+    }
+  },
 })

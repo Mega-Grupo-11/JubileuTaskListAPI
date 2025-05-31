@@ -4,7 +4,7 @@ import { RegisterController } from './../controllers/user/register-controller';
 import { LoginController } from './../controllers/user/login-controller';
 import { authenticateToken } from './../middlewares/auth-middleware';
 import { CreateTaskController } from './../controllers/task/create-controller';
-import { ReadAllTaskController } from './../controllers/task/read-controller';
+import { ReadTaskController } from './../controllers/task/read-controller';
 import { UpdateTaskController } from './../controllers/task/update-task-controller';
 import { ForgotPasswordController } from '../controllers/user/auth/forgot-password-controller';
 import { ForgotPasswordUseCase } from '../../usecases/user/auth/ForgotPasswordUseCase';
@@ -12,6 +12,7 @@ import { PrismaUserRepository } from '../../infrastructure/repositories/user-rep
 import { NodemailerService } from '../../infrastructure/services/NodemailerService';
 import { ResetPasswordUseCase } from '../../usecases/user/auth/ResetPasswordUseCase';
 import { ResetPasswordController } from '../controllers/user/auth/reset-password-controller';
+import { DeleteTaskController } from './../controllers/task/delete-task-controller';
 
 export const router  = Router();
 
@@ -30,7 +31,7 @@ router.post('/task', authenticateToken, async (req, res) => {
 });
 
 router.get('/tasks', authenticateToken, async (req, res) => {
-    await ReadAllTaskController.getAllTasks(req, res);
+    await ReadTaskController.getAllTasks(req, res);
 });
 
 router.put('/task/:id', authenticateToken, async (req, res) => {
@@ -52,4 +53,21 @@ const resetPasswordController = new ResetPasswordController(resetPasswordUseCase
 
 router.post('/reset-password', async (req, res) => {
     await resetPasswordController.resetPassword(req, res);
+});
+
+
+router.delete('/task/:id', authenticateToken, async (req, res) => {
+    await DeleteTaskController.delete(req, res);
+});
+
+router.delete('/tasks/completed', authenticateToken, async (req, res) => {
+    await DeleteTaskController.deleteCompletedTasks(req, res);
+});
+
+router.get('/task/:id', authenticateToken, async (req, res) => {
+    await ReadTaskController.getTaskById(req, res);
+});
+
+router.get('/tasks/search', authenticateToken, async (req, res) => {
+    await ReadTaskController.search(req, res);
 });

@@ -1,8 +1,8 @@
-import { PrismaClient, Tarefa } from "@prisma/client";
 import { ITaskRepository } from "../../domain/repositories/task-repository";
 import { CreateTaskDTO } from "../../domain/dtos/task/create-task-dto";
+import { prisma } from "../../lib/prisma";
+import { Tarefa } from "prisma/client";
 
-const prisma = new PrismaClient();
 
 export class PrismaTaskRepository implements ITaskRepository{
     
@@ -38,4 +38,52 @@ export class PrismaTaskRepository implements ITaskRepository{
         });
         return updatedTask;
     }
+    
+    async delete(taskId: number): Promise<void> {
+        await prisma.tarefa.delete({
+            where: { id: taskId },
+        });
+    }
+
+    async deleteCompletedTasks(): Promise<void> {
+        await prisma.tarefa.deleteMany({
+            where: { status: true },
+        });
+    }
+
+    async findById(taskId: number): Promise<Tarefa[]> {
+        const task = await prisma.tarefa.findMany({
+            where: { id: taskId },
+        });
+        return task;
+    }
+
+    async searchTasks(
+        title: string,
+        filters?: { priority?: string; date?: string },
+        sort?: { field: string; order: "asc" | "desc" }
+    ): Promise<Tarefa[]> {
+        const where: any = {
+            titulo: { contains: title, mode: "insensitive" },
+        };
+
+        if (filters?.priority) {
+            where.prioridade = filters.priority.toUpperCase();
+        }
+
+        if (filters?.date) {
+            where.dataPrevista = new Date(filters.date);
+        }
+
+        const orderBy: any = {};
+        if (sort?.field) {
+            orderBy[sort.field] = sort.order;
+        }
+
+        return await prisma.tarefa.findMany({
+            where,
+            orderBy,
+        });
+    }
+
 }
