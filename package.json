@@ -1,3 +1,4 @@
+
 {
   "name": "jubileutasklistapi",
   "version": "1.0.0",
@@ -15,7 +16,7 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "dev": "prisma generate && prisma migrate dev && nodemon src/main/server.ts",
+    "dev": "cross-env DATABASE_URL=${DATABASE_URL_DEV} prisma db push --schema=./prisma/schema.dev.prisma && prisma generate --schema=./prisma/schema.dev.prisma && nodemon src/main/server.ts",
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc",
     "test": "vitest run",

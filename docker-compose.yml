@@ -11,6 +11,12 @@ services:
     depends_on:
       - db
     restart: always
+    command: >
+      /bin/sh -c "wait-for-it db:5432 --
+      && rm -rf prisma/migrations prisma/migration_lock.toml   
+      && npx prisma generate 
+      && npx prisma migrate dev --name init 
+      && npm start"
 
   db:
     image: postgres
