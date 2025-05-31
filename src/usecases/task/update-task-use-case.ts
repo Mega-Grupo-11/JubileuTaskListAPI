@@ -1,4 +1,4 @@
-import { Tarefa } from "@prisma/client";
+import { Task } from "src/domain/entities/task";
 import { UpdateTaskDTO } from "../../domain/dtos/task/update-task-dto";
 import { ITaskRepository } from "../../domain/repositories/task-repository";
 
@@ -6,7 +6,7 @@ import { ITaskRepository } from "../../domain/repositories/task-repository";
 export class UpdateTaskUseCase {
     constructor(private taskRepository: ITaskRepository) {}
 
-    async execute(taskId: number, taskData: UpdateTaskDTO): Promise<Tarefa> {
+    async execute(taskId: number, taskData: UpdateTaskDTO): Promise<Task> {
         try {
             const updatedTask = await this.taskRepository.update(taskId, taskData);
 
